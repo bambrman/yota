@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 
 Number_of_expected_args=3
 E_WRONG_ARGS=85
