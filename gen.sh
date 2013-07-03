@@ -1,4 +1,4 @@
-#/bin/ash
+#/bin/bash
 
 if [ $# != "2" ]
 then
