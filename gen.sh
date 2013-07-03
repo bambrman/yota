@@ -1,14 +1,33 @@
-#/bin/bash
+#/bin/ash
 
-if [ $# != "1" ]
+if [ $# != "2" ]
 then
-  echo "Usage: `basename $0` personal-cabinet.htm"
+	echo "Usage: `basename $0` login password"
 	exit 1
 fi 
 
+pr=`curl -c cook.txt  -s -k -L -d "IDToken1=$1&IDToken2=$2&IDToken3=$2&goto=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginSuccess&gotoOnFail=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginError&old-token=&org=customer" https://login.yota.ru/UI/Login | grep "Yota - Р’С…РѕРґ РІ Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚/Р РµРіРёСЃС‚СЂР°С†РёСЏ"`
 
+if [ ${#pr} -eq 0 ]
+then
+ echo "Login OK"
+ pr=`curl -b cook.txt  -s -k -L https://my.yota.ru/selfcare/devices | grep "\"product\" va"`
 
-x=$(cat $1)
+ if [ ${#pr} -eq 0 ]
+  then
+	 echo "Personal cabinet error!!!"
+	 logger -t YOTA "Personal cabinet error!!!"
+	 exit 1	
+  fi
+else
+ echo "Login error!!!"
+ logger -t YOTA "Login error!!!"
+ exit 1
+fi
+
+echo "Personal cabinet OK"
+x=`curl -b cook.txt  -s -k -L https://my.yota.ru/selfcare/devices`
+# x=$(cat $1)
 
 y=${x#*\"steps\":}
 y=${y%\"optionList\"*}
