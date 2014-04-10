@@ -6,7 +6,7 @@ then
 	exit 1
 fi 
 
-pr=`curl -c cook.txt  -s -k -L -d "IDToken1=$1&IDToken2=$2&IDToken3=$2&goto=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginSuccess&gotoOnFail=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginError&old-token=&org=customer" https://login.yota.ru/UI/Login | grep "Yota - Р’С…РѕРґ РІ Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚/Р РµРіРёСЃС‚СЂР°С†РёСЏ"`
+pr=`curl -c cook.txt  -s -k -L -d "IDToken1=$1&IDToken2=$2&goto=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginSuccess&gotoOnFail=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginError&old-token=&org=customer" https://login.yota.ru/UI/Login | grep "Yota - Р’С…РѕРґ РІ Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚/Р РµРіРёСЃС‚СЂР°С†РёСЏ"`
 
 if [ ${#pr} -eq 0 ]
 then
@@ -90,7 +90,7 @@ done
 echo "*) TARIF=\"$pd\";;">>n_yota.sh
 echo "esac" >> n_yota.sh
 
-echo "pr=\`curl -c cook.txt  -s -k -L -d \"IDToken1=\$1&IDToken2=\$2&IDToken3=\$2&goto=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginSuccess&gotoOnFail=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginError&old-token=&org=customer\" https://login.yota.ru/UI/Login | grep \"Yota - Р’С…РѕРґ РІ Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚/Р РµРіРёСЃС‚СЂР°С†РёСЏ\"\`">>n_yota.sh
+echo "pr=\`curl -c cook.txt  -s -k -L -d \"IDToken1=\$1&IDToken2=\$2&goto=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginSuccess&gotoOnFail=https%3A%2F%2Fmy.yota.ru%3A443%2Fselfcare%2FloginError&old-token=&org=customer\" https://login.yota.ru/UI/Login | grep \"Yota - Р’С…РѕРґ РІ Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚/Р РµРіРёСЃС‚СЂР°С†РёСЏ\"\`">>n_yota.sh
 
 echo "" >> n_yota.sh 
 
