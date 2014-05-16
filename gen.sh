@@ -124,15 +124,17 @@ then
 fi " >> n_yota.sh
 
 echo "
+
+dn=\${od%%offerDisabled*}
+dn=\${dn%amountNumber*}
+dn=\${dn##*:}
+dn=\$\"Days: \"\${dn%,*}
+
 od=\${od#*offerDisabled}
 od=\${od%%amountNumber*}
-dn=\${od##*:}
-dn=\$\"Days: \"\${dn%,*}
-" >> n_yota.sh
-
-echo "
 speed=\${od#*speedNumber\\\":}
 speed=\$\"Speed: \"\${speed%%,*}
+
 
 echo \$speed  \$dn
 logger -t YOTA \$speed  \$dn
