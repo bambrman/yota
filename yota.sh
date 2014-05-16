@@ -68,13 +68,15 @@ then
  exit 1
 fi
 
-od=${od#*offerDisabled}
-od=${od%%amountNumber*}
-dn=${od##*:}
-dn=$"Days: "${dn%,*}
+dn=\${od%%offerDisabled*}
+dn=\${dn%amountNumber*}
+dn=\${dn##*:}
+dn=\$\"Days: \"\${dn%,*}
 
-speed=${od#*speedNumber\":}
-speed=$"Speed: "${speed%%,*}
+od=\${od#*offerDisabled}
+od=\${od%%amountNumber*}
+speed=\${od#*speedNumber\\\":}
+speed=\$\"Speed: \"\${speed%%,*}
 
 echo $speed  $dn
 logger -t YOTA $speed  $dn
