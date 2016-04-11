@@ -62,7 +62,7 @@ done
 #---------------------------------------------------------
 
 
-echo "#!/bin/bash" > n_yota.sh
+echo "#/bin/bash" > n_yota.sh
 echo "" >> n_yota.sh
 echo "Number_of_expected_args=3" >> n_yota.sh
 echo "E_WRONG_ARGS=85" >> n_yota.sh
@@ -110,7 +110,7 @@ echo "else
  exit 1
 fi
 pr=\${pr#*value=\\\"}
-pr=\${pr%\\\" />}
+pr=\${pr%%\\\" />*}
 
 OCODE=\$TARIF" >> n_yota.sh
 echo  "od=\`curl -b cook.txt  -s -k -L -d \"product=\$pr&offerCode=\$OCODE&homeOfferCode=&areOffersAvailable=false&period=&status=custom&autoprolong=0&isSlot=false&resourceId=&currentDevice=1&username=&isDisablingAutoprolong=false\" https://my.yota.ru/selfcare/devices/changeOffer | grep \"offerDisabled\"\`">>n_yota.sh
